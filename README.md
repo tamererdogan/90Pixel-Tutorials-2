@@ -39,6 +39,7 @@ Symfony ve Doctrine kullanarak Docker üzerinde çalışacak şekilde bir Süper
 - Terminalden **projeDizini** klasörüne geri çıkın.
 - **docker-compose up** komutu ile projenin ayağa kalkmasını bekleyin.
 - **docker exec -it lig_php php /var/www/app/bin/console doctrine:database:create** komutu ile veritabanını oluşturun.
+- **docker exec -it lig_php php /var/www/app/bin/console make:migration** komutu ile migration oluşturun.
 - **docker exec -it lig_php php /var/www/app/bin/console doctrine:migrations:migrate** komutu ile veritabanını yapılandırın.
 - **localhost** adresi üzerinden erişim sağlayabilirsiniz.
 
