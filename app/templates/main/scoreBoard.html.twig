@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Anasayfa{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+
+{% block body %}
+
+	<h1 style="text-align:center; margin-top: 20px">SKOR TABLOSU</h1> 
+	<div class="container" style="margin-top: 20px">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">Sıra</th>
+					<th scope="col">Takım</th>
+					<th scope="col">Maç Sayısı</th>
+					<th scope="col">Galibiyet</th>
+					<th scope="col">Beraberlik</th>
+					<th scope="col">Mağlubiyet</th>
+					<th scope="col">Atılan Gol</th>
+					<th scope="col">Yenilen Gol</th>
+					<th scope="col">Averaj</th>
+					<th scope="col">Puan</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for score in scores %}
+				<tr>
+					<th scope="row">{{ score.rank == null ? 0 : score.rank }}</th>					
+					<td>{{score.team.name}}</td>					
+					<td>{{ score.playedMatch == null ? 0 : score.playedMatch }}</td>					
+					<td>{{ score.win == null ? 0 : score.win }}</td>
+					<td>{{ score.draw == null ? 0 : score.draw }}</td>
+					<td>{{ score.lose == null ? 0 : score.lose }}</td>
+					<td>{{ score.homeGoals == null ? 0 : score.homeGoals }}</td>
+					<td>{{ score.awayGoals == null ? 0 : score.awayGoals }}</td>
+					<td>{{ score.average == null ? 0 : score.average }}</td>
+					<td>{{ score.point == null ? 0 : score.point }}</td>				
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>	
+        <a href="{{ path('main') }}" type="button" class="btn btn-primary w-100">
+            Geri Dön
+        </a>	
+		<br><br><br>
+	<div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
+{% endblock %}
